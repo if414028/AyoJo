@@ -9,13 +9,21 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity
+            android:name=".ui.login.LoginActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".ui.main.MainActivity" />
+        <activity android:name=".ui.post.HouseOwnerDescActivity" />
+        <activity android:name=".ui.post.FirstQuestionActivity" />
+        <activity android:name=".ui.post.SecondQuestionActivity" />
+        <activity android:name=".ui.post.TakePictureActivity" />
+        <activity android:name=".ui.post.ReviewPostActivity"></activity>
     </application>
 
 </manifest>

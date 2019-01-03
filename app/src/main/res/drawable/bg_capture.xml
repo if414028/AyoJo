@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright (c) 2018 Qlue.
+  ~ Created by Reynaldo Leoricci Mikhael
+  -->
+
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_pressed="false">
+        <shape android:shape="oval">
+            <size android:width="50dp" android:height="50dp" />
+            <stroke android:width="12dp" android:color="@color/colorPrimary" />
+            <solid android:color="@color/colorWhite" />
+        </shape>
+    </item>
+    <item android:state_pressed="true">
+        <shape android:shape="oval">
+            <size android:width="70dp" android:height="70dp" />
+            <stroke android:width="12dp" android:color="@color/colorPrimary" />
+            <solid android:color="@color/colorWhite" />
+        </shape>
+    </item>
+</selector>

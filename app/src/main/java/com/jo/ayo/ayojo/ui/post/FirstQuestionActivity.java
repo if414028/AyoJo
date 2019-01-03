@@ -1,9 +1,11 @@
 package com.jo.ayo.ayojo.ui.post;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.support.annotation.DrawableRes;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.animation.OvershootInterpolator;
@@ -12,6 +14,9 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.jo.ayo.ayojo.R;
+import com.jo.ayo.ayojo.data.model.PostData;
+import com.jo.ayo.ayojo.data.pref.PrefManager;
+import com.jo.ayo.ayojo.ui.main.MainActivity;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -32,13 +37,16 @@ public class FirstQuestionActivity extends AppCompatActivity {
     @BindView(R.id.txtOptionTwo)
     TextView txtOptionTwo;
 
-    private String answer;
+    private String answer = "YES";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_first_question);
         ButterKnife.bind(this);
+
+        getSupportActionBar().setTitle("Pertanyaan pertama");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
     @OnTouch(R.id.btnOptionOne)
@@ -71,6 +79,37 @@ public class FirstQuestionActivity extends AppCompatActivity {
             }
         }
         return true;
+    }
+
+    @OnClick(R.id.btnNextToStepThree)
+    void doStepThree() {
+        PostData postData = new PostData();
+        postData.setFirstAnsewr(answer);
+
+        PrefManager.setFirstanswer(getApplicationContext(), postData);
+
+        Intent intent = new Intent(getApplicationContext(), SecondQuestionActivity.class);
+        startActivity(intent);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                Intent intent = new Intent(getApplicationContext(), HouseOwnerDescActivity.class);
+                startActivity(intent);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+
+        }
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent intent = new Intent(getApplicationContext(), HouseOwnerDescActivity.class);
+        startActivity(intent);
     }
 
     boolean handleViewTouchFeedback(View view, MotionEvent motionEvent) {

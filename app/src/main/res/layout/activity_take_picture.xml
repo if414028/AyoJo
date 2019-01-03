@@ -6,4 +6,28 @@
     android:layout_height="match_parent"
     tools:context=".ui.post.TakePictureActivity">
 
+    <com.camerakit.CameraKitView
+        android:id="@+id/camera"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:adjustViewBounds="true"
+        app:camera_facing="back"
+        app:camera_flash="auto"
+        app:camera_focus="continuous"
+        app:camera_imageJpegQuality="50"
+        app:layout_constraintDimensionRatio="H,1:1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btnCapture"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_marginBottom="56dp"
+        android:background="@drawable/bg_capture"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
+
 </android.support.constraint.ConstraintLayout>

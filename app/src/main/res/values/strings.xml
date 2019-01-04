@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">AyoJo</string>
+    <string name="txt_first_question">Dalam skala 1-5, seberapa puas anda dengan kinerja kepemimpinan Presiden Joko Widodo sejak tahun 2014? \n (Sangat Tidak Puas, Tidak Puas, Biasa Saja, Puas, Sangat Puas)</string>
+    <string name="tv_scond_question">Dalam skala 1-5, seberapa yakin anda untuk memilih pasangan Joko Widodo-Ma’ruf Amin dalam Pilpres 2019? \n (Sangat Tidak Yakin, Tidak Yakin, Ragu-Ragu, Yakin, Sangat Yakin)</string>
 </resources>

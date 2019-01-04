@@ -31,13 +31,31 @@ public class FirstQuestionActivity extends AppCompatActivity {
     @BindView(R.id.btnOptionTwo)
     RelativeLayout btnOptionTwo;
 
+    @BindView(R.id.btnOptionThree)
+    RelativeLayout btnOptionThree;
+
+    @BindView(R.id.btnOptionFour)
+    RelativeLayout btnOptionFour;
+
+    @BindView(R.id.btnOptionFive)
+    RelativeLayout btnOptionFive;
+
     @BindView(R.id.txtOptionOne)
     TextView txtOptionOne;
 
     @BindView(R.id.txtOptionTwo)
     TextView txtOptionTwo;
 
-    private String answer = "YES";
+    @BindView(R.id.txtOptionThree)
+    TextView txtOptionThree;
+
+    @BindView(R.id.txtOptionFour)
+    TextView txtOptionFour;
+
+    @BindView(R.id.txtOptionFive)
+    TextView txtOptionFive;
+
+    private String answer = "1";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,11 +72,18 @@ public class FirstQuestionActivity extends AppCompatActivity {
         handleViewTouchFeedback(view, motionEvent);
         switch (motionEvent.getAction()) {
             case MotionEvent.ACTION_UP: {
-                answer = "YES";
+                answer = "1";
                 btnOptionOne.setBackgroundResource(R.drawable.bg_blue_rounded);
                 btnOptionTwo.setBackgroundResource(R.drawable.bg_grey_rounded);
+                btnOptionThree.setBackgroundResource(R.drawable.bg_grey_rounded);
+                btnOptionFour.setBackgroundResource(R.drawable.bg_grey_rounded);
+                btnOptionFive.setBackgroundResource(R.drawable.bg_grey_rounded);
+
                 txtOptionOne.setTextColor(getResources().getColor(R.color.colorWhite));
                 txtOptionTwo.setTextColor(getResources().getColor(R.color.colorText));
+                txtOptionThree.setTextColor(getResources().getColor(R.color.colorText));
+                txtOptionFour.setTextColor(getResources().getColor(R.color.colorText));
+                txtOptionFive.setTextColor(getResources().getColor(R.color.colorText));
                 break;
             }
         }
@@ -70,11 +95,87 @@ public class FirstQuestionActivity extends AppCompatActivity {
         handleViewTouchFeedback(view, motionEvent);
         switch (motionEvent.getAction()) {
             case MotionEvent.ACTION_UP: {
-                answer = "NO";
+                answer = "2";
                 btnOptionTwo.setBackgroundResource(R.drawable.bg_blue_rounded);
                 btnOptionOne.setBackgroundResource(R.drawable.bg_grey_rounded);
+                btnOptionThree.setBackgroundResource(R.drawable.bg_grey_rounded);
+                btnOptionFour.setBackgroundResource(R.drawable.bg_grey_rounded);
+                btnOptionFive.setBackgroundResource(R.drawable.bg_grey_rounded);
+
                 txtOptionTwo.setTextColor(getResources().getColor(R.color.colorWhite));
                 txtOptionOne.setTextColor(getResources().getColor(R.color.colorText));
+                txtOptionThree.setTextColor(getResources().getColor(R.color.colorText));
+                txtOptionFour.setTextColor(getResources().getColor(R.color.colorText));
+                txtOptionFive.setTextColor(getResources().getColor(R.color.colorText));
+                break;
+            }
+        }
+        return true;
+    }
+
+    @OnTouch(R.id.btnOptionThree)
+    boolean chooseOptionThree(View view, MotionEvent motionEvent) {
+        handleViewTouchFeedback(view, motionEvent);
+        switch (motionEvent.getAction()) {
+            case MotionEvent.ACTION_UP: {
+                answer = "3";
+                btnOptionTwo.setBackgroundResource(R.drawable.bg_grey_rounded);
+                btnOptionOne.setBackgroundResource(R.drawable.bg_grey_rounded);
+                btnOptionThree.setBackgroundResource(R.drawable.bg_blue_rounded);
+                btnOptionFour.setBackgroundResource(R.drawable.bg_grey_rounded);
+                btnOptionFive.setBackgroundResource(R.drawable.bg_grey_rounded);
+
+                txtOptionTwo.setTextColor(getResources().getColor(R.color.colorText));
+                txtOptionOne.setTextColor(getResources().getColor(R.color.colorText));
+                txtOptionThree.setTextColor(getResources().getColor(R.color.colorWhite));
+                txtOptionFour.setTextColor(getResources().getColor(R.color.colorText));
+                txtOptionFive.setTextColor(getResources().getColor(R.color.colorText));
+                break;
+            }
+        }
+        return true;
+    }
+
+    @OnTouch(R.id.btnOptionFour)
+    boolean chooseOptionFour(View view, MotionEvent motionEvent) {
+        handleViewTouchFeedback(view, motionEvent);
+        switch (motionEvent.getAction()) {
+            case MotionEvent.ACTION_UP: {
+                answer = "4";
+                btnOptionTwo.setBackgroundResource(R.drawable.bg_grey_rounded);
+                btnOptionOne.setBackgroundResource(R.drawable.bg_grey_rounded);
+                btnOptionThree.setBackgroundResource(R.drawable.bg_grey_rounded);
+                btnOptionFour.setBackgroundResource(R.drawable.bg_blue_rounded);
+                btnOptionFive.setBackgroundResource(R.drawable.bg_grey_rounded);
+
+                txtOptionTwo.setTextColor(getResources().getColor(R.color.colorText));
+                txtOptionOne.setTextColor(getResources().getColor(R.color.colorText));
+                txtOptionThree.setTextColor(getResources().getColor(R.color.colorText));
+                txtOptionFour.setTextColor(getResources().getColor(R.color.colorWhite));
+                txtOptionFive.setTextColor(getResources().getColor(R.color.colorText));
+                break;
+            }
+        }
+        return true;
+    }
+
+    @OnTouch(R.id.btnOptionFive)
+    boolean chooseOptionFive(View view, MotionEvent motionEvent) {
+        handleViewTouchFeedback(view, motionEvent);
+        switch (motionEvent.getAction()) {
+            case MotionEvent.ACTION_UP: {
+                answer = "5";
+                btnOptionTwo.setBackgroundResource(R.drawable.bg_grey_rounded);
+                btnOptionOne.setBackgroundResource(R.drawable.bg_grey_rounded);
+                btnOptionThree.setBackgroundResource(R.drawable.bg_grey_rounded);
+                btnOptionFour.setBackgroundResource(R.drawable.bg_grey_rounded);
+                btnOptionFive.setBackgroundResource(R.drawable.bg_blue_rounded);
+
+                txtOptionTwo.setTextColor(getResources().getColor(R.color.colorText));
+                txtOptionOne.setTextColor(getResources().getColor(R.color.colorText));
+                txtOptionThree.setTextColor(getResources().getColor(R.color.colorText));
+                txtOptionFour.setTextColor(getResources().getColor(R.color.colorText));
+                txtOptionFive.setTextColor(getResources().getColor(R.color.colorWhite));
                 break;
             }
         }

@@ -17,6 +17,8 @@ import com.jo.ayo.ayojo.data.model.PostData;
 import com.jo.ayo.ayojo.data.pref.PrefManager;
 import com.jo.ayo.ayojo.ui.main.MainActivity;
 
+import org.w3c.dom.Text;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -30,13 +32,31 @@ public class SecondQuestionActivity extends AppCompatActivity {
     @BindView(R.id.btnOptionTwoSecondQuestion)
     RelativeLayout btnOptionTwo;
 
+    @BindView(R.id.btnOptionThreeSecondQuestion)
+    RelativeLayout btnOptionThree;
+
+    @BindView(R.id.btnOptionFourSecondQuestion)
+    RelativeLayout btnOptionFour;
+
+    @BindView(R.id.btnOptionFiveSecondQuestion)
+    RelativeLayout btnOptionFive;
+
     @BindView(R.id.txtOptionOneSecondQuestion)
     TextView txtOptionOne;
 
     @BindView(R.id.txtOptionTwoSecondQuestion)
     TextView txtOptionTwo;
 
-    String secondAnswer = "YES";
+    @BindView(R.id.txtOptionThreeSecondQuestion)
+    TextView txtOptionThree;
+
+    @BindView(R.id.txtOptionFourSecondQuestion)
+    TextView txtOptionFour;
+
+    @BindView(R.id.txtOptionFiveSecondQuestion)
+    TextView txtOptionFive;
+
+    String secondAnswer = "1";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,11 +85,18 @@ public class SecondQuestionActivity extends AppCompatActivity {
         handleViewTouchFeedback(view, motionEvent);
         switch (motionEvent.getAction()) {
             case MotionEvent.ACTION_UP: {
-                secondAnswer = "YES";
+                secondAnswer = "1";
                 btnOptionOne.setBackgroundResource(R.drawable.bg_blue_rounded);
                 btnOptionTwo.setBackgroundResource(R.drawable.bg_grey_rounded);
+                btnOptionThree.setBackgroundResource(R.drawable.bg_grey_rounded);
+                btnOptionFour.setBackgroundResource(R.drawable.bg_grey_rounded);
+                btnOptionFive.setBackgroundResource(R.drawable.bg_grey_rounded);
+
                 txtOptionOne.setTextColor(getResources().getColor(R.color.colorWhite));
                 txtOptionTwo.setTextColor(getResources().getColor(R.color.colorText));
+                txtOptionThree.setTextColor(getResources().getColor(R.color.colorText));
+                txtOptionFour.setTextColor(getResources().getColor(R.color.colorText));
+                txtOptionFive.setTextColor(getResources().getColor(R.color.colorText));
                 break;
             }
         }
@@ -81,11 +108,87 @@ public class SecondQuestionActivity extends AppCompatActivity {
         handleViewTouchFeedback(view, motionEvent);
         switch (motionEvent.getAction()) {
             case MotionEvent.ACTION_UP: {
-                secondAnswer = "NO";
+                secondAnswer = "2";
                 btnOptionTwo.setBackgroundResource(R.drawable.bg_blue_rounded);
                 btnOptionOne.setBackgroundResource(R.drawable.bg_grey_rounded);
+                btnOptionThree.setBackgroundResource(R.drawable.bg_grey_rounded);
+                btnOptionFour.setBackgroundResource(R.drawable.bg_grey_rounded);
+                btnOptionFive.setBackgroundResource(R.drawable.bg_grey_rounded);
+
                 txtOptionTwo.setTextColor(getResources().getColor(R.color.colorWhite));
                 txtOptionOne.setTextColor(getResources().getColor(R.color.colorText));
+                txtOptionThree.setTextColor(getResources().getColor(R.color.colorText));
+                txtOptionFour.setTextColor(getResources().getColor(R.color.colorText));
+                txtOptionFive.setTextColor(getResources().getColor(R.color.colorText));
+                break;
+            }
+        }
+        return true;
+    }
+
+    @OnTouch(R.id.btnOptionThreeSecondQuestion)
+    boolean chooseOptionThree(View view, MotionEvent motionEvent) {
+        handleViewTouchFeedback(view, motionEvent);
+        switch (motionEvent.getAction()) {
+            case MotionEvent.ACTION_UP: {
+                secondAnswer = "3";
+                btnOptionTwo.setBackgroundResource(R.drawable.bg_grey_rounded);
+                btnOptionOne.setBackgroundResource(R.drawable.bg_grey_rounded);
+                btnOptionThree.setBackgroundResource(R.drawable.bg_blue_rounded);
+                btnOptionFour.setBackgroundResource(R.drawable.bg_grey_rounded);
+                btnOptionFive.setBackgroundResource(R.drawable.bg_grey_rounded);
+
+                txtOptionTwo.setTextColor(getResources().getColor(R.color.colorText));
+                txtOptionOne.setTextColor(getResources().getColor(R.color.colorText));
+                txtOptionThree.setTextColor(getResources().getColor(R.color.colorWhite));
+                txtOptionFour.setTextColor(getResources().getColor(R.color.colorText));
+                txtOptionFive.setTextColor(getResources().getColor(R.color.colorText));
+                break;
+            }
+        }
+        return true;
+    }
+
+    @OnTouch(R.id.btnOptionFourSecondQuestion)
+    boolean chooseOptionFour(View view, MotionEvent motionEvent) {
+        handleViewTouchFeedback(view, motionEvent);
+        switch (motionEvent.getAction()) {
+            case MotionEvent.ACTION_UP: {
+                secondAnswer = "4";
+                btnOptionTwo.setBackgroundResource(R.drawable.bg_grey_rounded);
+                btnOptionOne.setBackgroundResource(R.drawable.bg_grey_rounded);
+                btnOptionThree.setBackgroundResource(R.drawable.bg_grey_rounded);
+                btnOptionFour.setBackgroundResource(R.drawable.bg_blue_rounded);
+                btnOptionFive.setBackgroundResource(R.drawable.bg_grey_rounded);
+
+                txtOptionTwo.setTextColor(getResources().getColor(R.color.colorText));
+                txtOptionOne.setTextColor(getResources().getColor(R.color.colorText));
+                txtOptionThree.setTextColor(getResources().getColor(R.color.colorText));
+                txtOptionFour.setTextColor(getResources().getColor(R.color.colorWhite));
+                txtOptionFive.setTextColor(getResources().getColor(R.color.colorText));
+                break;
+            }
+        }
+        return true;
+    }
+
+    @OnTouch(R.id.btnOptionFiveSecondQuestion)
+    boolean chooseOptionFive(View view, MotionEvent motionEvent) {
+        handleViewTouchFeedback(view, motionEvent);
+        switch (motionEvent.getAction()) {
+            case MotionEvent.ACTION_UP: {
+                secondAnswer = "5";
+                btnOptionTwo.setBackgroundResource(R.drawable.bg_grey_rounded);
+                btnOptionOne.setBackgroundResource(R.drawable.bg_grey_rounded);
+                btnOptionThree.setBackgroundResource(R.drawable.bg_grey_rounded);
+                btnOptionFour.setBackgroundResource(R.drawable.bg_grey_rounded);
+                btnOptionFive.setBackgroundResource(R.drawable.bg_blue_rounded);
+
+                txtOptionTwo.setTextColor(getResources().getColor(R.color.colorText));
+                txtOptionOne.setTextColor(getResources().getColor(R.color.colorText));
+                txtOptionThree.setTextColor(getResources().getColor(R.color.colorText));
+                txtOptionFour.setTextColor(getResources().getColor(R.color.colorText));
+                txtOptionFive.setTextColor(getResources().getColor(R.color.colorWhite));
                 break;
             }
         }

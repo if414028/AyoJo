@@ -31,52 +31,124 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:text="Contoh pertanyaan pertama..."
+                android:text="@string/txt_first_question"
                 android:textSize="16sp"
                 android:textStyle="bold" />
 
-            <RelativeLayout
-                android:id="@+id/btnOptionOne"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:background="@drawable/bg_blue_rounded">
+                android:orientation="horizontal">
 
-                <TextView
-                    android:id="@+id/txtOptionOne"
-                    android:layout_width="match_parent"
+                <RelativeLayout
+                    android:id="@+id/btnOptionOne"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:text="Ya"
-                    android:textColor="@color/colorWhite"
-                    android:textStyle="bold" />
+                    android:layout_marginTop="8dp"
+                    android:layout_weight="0.2"
+                    android:background="@drawable/bg_blue_rounded">
 
-            </RelativeLayout>
+                    <TextView
+                        android:id="@+id/txtOptionOne"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="1"
+                        android:textAlignment="center"
+                        android:textColor="@color/colorWhite"
+                        android:textStyle="bold" />
 
-            <RelativeLayout
-                android:id="@+id/btnOptionTwo"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:background="@drawable/bg_grey_rounded">
+                </RelativeLayout>
 
-                <TextView
-                    android:id="@+id/txtOptionTwo"
-                    android:layout_width="match_parent"
+                <RelativeLayout
+                    android:id="@+id/btnOptionTwo"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:text="Tidak"
-                    android:textColor="@color/colorText"
-                    android:textStyle="bold" />
+                    android:layout_marginLeft="4dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_weight="0.2"
+                    android:background="@drawable/bg_grey_rounded">
 
-            </RelativeLayout>
+                    <TextView
+                        android:id="@+id/txtOptionTwo"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="2"
+                        android:textAlignment="center"
+                        android:textColor="@color/colorText"
+                        android:textStyle="bold" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/btnOptionThree"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="4dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_weight="0.2"
+                    android:background="@drawable/bg_grey_rounded">
+
+                    <TextView
+                        android:id="@+id/txtOptionThree"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="3"
+                        android:textAlignment="center"
+                        android:textColor="@color/colorText"
+                        android:textStyle="bold" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/btnOptionFour"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="4dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_weight="0.2"
+                    android:background="@drawable/bg_grey_rounded">
+
+                    <TextView
+                        android:id="@+id/txtOptionFour"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="4"
+                        android:textAlignment="center"
+                        android:textColor="@color/colorText"
+                        android:textStyle="bold" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/btnOptionFive"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="4dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_weight="0.2"
+                    android:background="@drawable/bg_grey_rounded">
+
+                    <TextView
+                        android:id="@+id/txtOptionFive"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="5"
+                        android:textAlignment="center"
+                        android:textColor="@color/colorText"
+                        android:textStyle="bold" />
+
+                </RelativeLayout>
+
+            </LinearLayout>
 
             <Button
                 android:id="@+id/btnNextToStepThree"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/bt_rounded"
-                android:textColor="@color/colorWhite"
                 android:layout_marginTop="8dp"
-                android:text="Selanjutnya" />
+                android:background="@drawable/bt_rounded"
+                android:text="Selanjutnya"
+                android:textColor="@color/colorWhite" />
 
 
         </LinearLayout>

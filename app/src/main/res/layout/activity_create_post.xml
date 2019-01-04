@@ -50,6 +50,91 @@
                         android:padding="8dp"
                         android:textSize="12sp" />
 
+                    <EditText
+                        android:id="@+id/etPekerjaan"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:background="@drawable/et_grey_rounded"
+                        android:hint="Pekerjaan"
+                        android:inputType="text"
+                        android:padding="8dp"
+                        android:textSize="12sp" />
+
+                    <EditText
+                        android:id="@+id/etAlamat"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:background="@drawable/et_grey_rounded"
+                        android:hint="Alamat"
+                        android:inputType="text"
+                        android:padding="8dp"
+                        android:textSize="12sp" />
+
+                    <EditText
+                        android:id="@+id/etUsia"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:background="@drawable/et_grey_rounded"
+                        android:hint="Usia"
+                        android:inputType="number"
+                        android:padding="8dp"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="Jenis kelamin"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <RelativeLayout
+                            android:id="@+id/btnOptionOne"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:layout_weight="0.5"
+                            android:background="@drawable/bg_blue_rounded">
+
+                            <TextView
+                                android:id="@+id/txtOptionOne"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Laki - laki"
+                                android:textAlignment="center"
+                                android:textColor="@color/colorWhite"
+                                android:textStyle="bold" />
+
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:id="@+id/btnOptionTwo"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="4dp"
+                            android:layout_marginTop="8dp"
+                            android:layout_weight="0.5"
+                            android:background="@drawable/bg_grey_rounded">
+
+                            <TextView
+                                android:id="@+id/txtOptionTwo"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Perempuan"
+                                android:textAlignment="center"
+                                android:textColor="@color/colorText"
+                                android:textStyle="bold" />
+
+                        </RelativeLayout>
+
+                    </LinearLayout>
+
                     <Button
                         android:id="@+id/btnNextToStepTwo"
                         android:layout_width="match_parent"

@@ -31,42 +31,115 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:text="Contoh pertanyaan kedua..."
+                android:text="@string/tv_scond_question"
                 android:textSize="16sp"
                 android:textStyle="bold" />
 
-            <RelativeLayout
-                android:id="@+id/btnOptionOneSecondQuestion"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:background="@drawable/bg_blue_rounded">
+                android:orientation="horizontal">
 
-                <TextView
-                    android:id="@+id/txtOptionOneSecondQuestion"
-                    android:layout_width="match_parent"
+                <RelativeLayout
+                    android:id="@+id/btnOptionOneSecondQuestion"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:text="Ya"
-                    android:textColor="@color/colorWhite"
-                    android:textStyle="bold" />
+                    android:layout_marginTop="8dp"
+                    android:layout_weight="0.2"
+                    android:background="@drawable/bg_blue_rounded">
 
-            </RelativeLayout>
+                    <TextView
+                        android:id="@+id/txtOptionOneSecondQuestion"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="1"
+                        android:textAlignment="center"
+                        android:textColor="@color/colorWhite"
+                        android:textStyle="bold" />
 
-            <RelativeLayout
-                android:id="@+id/btnOptionTwoSecondQuestion"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:background="@drawable/bg_grey_rounded">
+                </RelativeLayout>
 
-                <TextView
-                    android:id="@+id/txtOptionTwoSecondQuestion"
-                    android:layout_width="match_parent"
+                <RelativeLayout
+                    android:id="@+id/btnOptionTwoSecondQuestion"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:text="Tidak"
-                    android:textStyle="bold" />
+                    android:layout_marginLeft="4dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_weight="0.2"
+                    android:background="@drawable/bg_grey_rounded">
 
-            </RelativeLayout>
+                    <TextView
+                        android:id="@+id/txtOptionTwoSecondQuestion"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="2"
+                        android:textAlignment="center"
+                        android:textColor="@color/colorText"
+                        android:textStyle="bold" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/btnOptionThreeSecondQuestion"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="4dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_weight="0.2"
+                    android:background="@drawable/bg_grey_rounded">
+
+                    <TextView
+                        android:id="@+id/txtOptionThreeSecondQuestion"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="3"
+                        android:textAlignment="center"
+                        android:textColor="@color/colorText"
+                        android:textStyle="bold" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/btnOptionFourSecondQuestion"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="4dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_weight="0.2"
+                    android:background="@drawable/bg_grey_rounded">
+
+                    <TextView
+                        android:id="@+id/txtOptionFourSecondQuestion"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="4"
+                        android:textAlignment="center"
+                        android:textColor="@color/colorText"
+                        android:textStyle="bold" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/btnOptionFiveSecondQuestion"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="4dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_weight="0.2"
+                    android:background="@drawable/bg_grey_rounded">
+
+                    <TextView
+                        android:id="@+id/txtOptionFiveSecondQuestion"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="5"
+                        android:textAlignment="center"
+                        android:textColor="@color/colorText"
+                        android:textStyle="bold" />
+
+                </RelativeLayout>
+
+            </LinearLayout>
 
             <Button
                 android:id="@+id/btnNextToStepFour"

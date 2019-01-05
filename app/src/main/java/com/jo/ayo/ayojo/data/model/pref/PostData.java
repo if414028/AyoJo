@@ -1,4 +1,4 @@
-package com.jo.ayo.ayojo.data.model;
+package com.jo.ayo.ayojo.data.model.pref;
 
 public class PostData {
     private String houseOwner;
@@ -6,6 +6,10 @@ public class PostData {
     private String secondAnswer;
     private float lat;
     private float lng;
+    private String work;
+    private String address;
+    private String age;
+    private String sex;
 
     public String getHouseOwner() {
         return houseOwner;
@@ -45,5 +49,37 @@ public class PostData {
 
     public void setLng(float lng) {
         this.lng = lng;
+    }
+
+    public String getWork() {
+        return work;
+    }
+
+    public void setWork(String work) {
+        this.work = work;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getAge() {
+        return age;
+    }
+
+    public void setAge(String age) {
+        this.age = age;
+    }
+
+    public String getSex() {
+        return sex;
+    }
+
+    public void setSex(String sex) {
+        this.sex = sex;
     }
 }

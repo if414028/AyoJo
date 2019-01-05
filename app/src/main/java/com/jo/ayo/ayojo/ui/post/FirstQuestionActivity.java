@@ -1,7 +1,6 @@
 package com.jo.ayo.ayojo.ui.post;
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.support.annotation.DrawableRes;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -14,9 +13,8 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.jo.ayo.ayojo.R;
-import com.jo.ayo.ayojo.data.model.PostData;
+import com.jo.ayo.ayojo.data.model.pref.PostData;
 import com.jo.ayo.ayojo.data.pref.PrefManager;
-import com.jo.ayo.ayojo.ui.main.MainActivity;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

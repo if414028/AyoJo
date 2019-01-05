@@ -18,6 +18,7 @@ import android.widget.ImageView;
 
 import com.camerakit.CameraKitView;
 import com.github.ybq.android.spinkit.style.Circle;
+import com.github.ybq.android.spinkit.style.Wave;
 import com.jo.ayo.ayojo.R;
 import com.jo.ayo.ayojo.ui.main.MainActivity;
 
@@ -46,10 +47,10 @@ public class TakePictureActivity extends AppCompatActivity {
         cameraKitView = findViewById(R.id.camera);
         cameraKitView.setPermissions(CameraKitView.PERMISSION_STORAGE);
 
-        Circle circle = new Circle();
+        Wave wave = new Wave();
         progressDialog = new ProgressDialog(TakePictureActivity.this);
         progressDialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
-        progressDialog.setIndeterminateDrawable(circle);
+        progressDialog.setIndeterminateDrawable(wave);
         progressDialog.setIndeterminate(true);
         progressDialog.setCancelable(false);
     }

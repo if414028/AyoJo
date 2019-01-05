@@ -11,14 +11,20 @@ import android.location.Location;
 import android.net.Uri;
 import android.os.Looper;
 import android.provider.Settings;
+import android.support.annotation.DrawableRes;
 import android.support.v4.app.ActivityCompat;
-import android.support.v4.app.NavUtils;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.animation.OvershootInterpolator;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.common.api.ResolvableApiException;
@@ -34,7 +40,7 @@ import com.google.android.gms.location.SettingsClient;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.jo.ayo.ayojo.BuildConfig;
 import com.jo.ayo.ayojo.R;
-import com.jo.ayo.ayojo.data.model.PostData;
+import com.jo.ayo.ayojo.data.model.pref.PostData;
 import com.jo.ayo.ayojo.data.pref.PrefManager;
 import com.jo.ayo.ayojo.ui.main.MainActivity;
 
@@ -44,6 +50,7 @@ import java.util.Date;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import butterknife.OnTouch;
 
 public class HouseOwnerDescActivity extends AppCompatActivity {
 
@@ -65,8 +72,31 @@ public class HouseOwnerDescActivity extends AppCompatActivity {
 
     private float lat, lng;
 
+    private String sex = "PRIA";
+
     @BindView(R.id.etHouseOwner)
     EditText etHouseOwner;
+
+    @BindView(R.id.etPekerjaan)
+    EditText etWork;
+
+    @BindView(R.id.etAlamat)
+    EditText etAddress;
+
+    @BindView(R.id.etUsia)
+    EditText etAge;
+
+    @BindView(R.id.btnMale)
+    RelativeLayout btnMale;
+
+    @BindView(R.id.btnFemale)
+    RelativeLayout btnFemale;
+
+    @BindView(R.id.txtMale)
+    TextView txtMale;
+
+    @BindView(R.id.txtFemale)
+    TextView txtFemale;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -81,14 +111,55 @@ public class HouseOwnerDescActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
+    @OnTouch(R.id.btnMale)
+    boolean chooseMale(View view, MotionEvent motionEvent) {
+        handleViewTouchFeedback(view, motionEvent);
+        switch (motionEvent.getAction()) {
+            case MotionEvent.ACTION_UP: {
+                sex = "PRIA";
+                btnMale.setBackgroundResource(R.drawable.bg_blue_rounded);
+                txtMale.setTextColor(getResources().getColor(R.color.colorWhite));
+
+                btnFemale.setBackgroundResource(R.drawable.bg_grey_rounded);
+                txtFemale.setTextColor(getResources().getColor(R.color.colorText));
+                break;
+            }
+        }
+        return true;
+    }
+
+    @OnTouch(R.id.btnFemale)
+    boolean chooseFemale(View view, MotionEvent motionEvent) {
+        handleViewTouchFeedback(view, motionEvent);
+        switch (motionEvent.getAction()) {
+            case MotionEvent.ACTION_UP: {
+                sex = "WANITA";
+                btnMale.setBackgroundResource(R.drawable.bg_grey_rounded);
+                txtMale.setTextColor(getResources().getColor(R.color.colorText));
+
+                btnFemale.setBackgroundResource(R.drawable.bg_blue_rounded);
+                txtFemale.setTextColor(getResources().getColor(R.color.colorWhite));
+                break;
+            }
+        }
+        return true;
+    }
+
     @OnClick(R.id.btnNextToStepTwo)
     void doStepTwo() {
         String houseOwner = etHouseOwner.getText().toString();
+        String work = etWork.getText().toString();
+        String address = etAddress.getText().toString();
+        String age = etAge.getText().toString();
 
         PostData postData = new PostData();
         postData.setHouseOwner(houseOwner);
         postData.setLat(lat);
         postData.setLng(lng);
+        postData.setWork(work);
+        postData.setAddress(address);
+        postData.setAge(age);
+        postData.setSex(sex);
 
         PrefManager.setHouseOwner(getApplicationContext(), postData);
 
@@ -248,5 +319,57 @@ public class HouseOwnerDescActivity extends AppCompatActivity {
                             //Toast.makeText(context, errorMessage, Toast.LENGTH_LONG).show();
                     }
                 });
+    }
+
+    boolean handleViewTouchFeedback(View view, MotionEvent motionEvent) {
+        switch (motionEvent.getAction()) {
+            case MotionEvent.ACTION_DOWN: {
+                touchDownAnimation(view);
+                return true;
+            }
+
+            case MotionEvent.ACTION_UP: {
+                touchUpAnimation(view);
+                return true;
+            }
+
+            default: {
+                return true;
+            }
+        }
+    }
+
+    void touchDownAnimation(View view) {
+        view.animate()
+                .scaleX(0.88f)
+                .scaleY(0.88f)
+                .setDuration(300)
+                .setInterpolator(new OvershootInterpolator())
+                .start();
+    }
+
+    void touchUpAnimation(View view) {
+        view.animate()
+                .scaleX(1f)
+                .scaleY(1f)
+                .setDuration(300)
+                .setInterpolator(new OvershootInterpolator())
+                .start();
+    }
+
+    void changeViewImageResource(final ImageView imageView, @DrawableRes final int resId) {
+        imageView.setRotation(0);
+        imageView.animate()
+                .rotationBy(360)
+                .setDuration(400)
+                .setInterpolator(new OvershootInterpolator())
+                .start();
+
+        imageView.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                imageView.setImageResource(resId);
+            }
+        }, 120);
     }
 }

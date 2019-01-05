@@ -3,7 +3,7 @@ package com.jo.ayo.ayojo.data.pref;
 import android.content.Context;
 import android.content.SharedPreferences;
 
-import com.jo.ayo.ayojo.data.model.PostData;
+import com.jo.ayo.ayojo.data.model.pref.PostData;
 import com.jo.ayo.ayojo.data.model.Token;
 
 public class PrefManager {
@@ -14,6 +14,11 @@ public class PrefManager {
     private static final String SECONDANSWERKEY = "SecondAnswerKey";
     private static final String LATKEY = "LatKey";
     private static final String LNGKEY = "LngKey";
+    private static final String WORKKEY = "WorkKey";
+    private static final String ADDRESSKEY = "AddressKey";
+    private static final String AGEKEY = "AgeKey";
+    private static final String SEXKEY = "SexKey";
+
     private static final String TOKENKEY = "TokenKey";
 
     Context _context;
@@ -33,6 +38,10 @@ public class PrefManager {
         editor.putString(HOUSEOWNERKEY, postData.getHouseOwner());
         editor.putFloat(LATKEY, postData.getLat());
         editor.putFloat(LNGKEY, postData.getLng());
+        editor.putString(WORKKEY, postData.getWork());
+        editor.putString(ADDRESSKEY, postData.getAddress());
+        editor.putString(AGEKEY, postData.getAge());
+        editor.putString(SEXKEY, postData.getSex());
         editor.commit();
     }
 
@@ -70,6 +79,10 @@ public class PrefManager {
         postData.setLng(sharedPreferences.getFloat(LNGKEY, 0.0f));
         postData.setFirstAnsewr(sharedPreferences.getString(FIRSTANSWERKEY, ""));
         postData.setSecondAnswer(sharedPreferences.getString(SECONDANSWERKEY, ""));
+        postData.setWork(sharedPreferences.getString(WORKKEY, ""));
+        postData.setAddress(sharedPreferences.getString(ADDRESSKEY, ""));
+        postData.setAge(sharedPreferences.getString(AGEKEY, ""));
+        postData.setSex(sharedPreferences.getString(SEXKEY, ""));
 
         return postData;
     }

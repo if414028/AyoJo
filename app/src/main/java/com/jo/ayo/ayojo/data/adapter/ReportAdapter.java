@@ -9,7 +9,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.jo.ayo.ayojo.R;
-import com.jo.ayo.ayojo.data.model.post.Report;
+import com.jo.ayo.ayojo.data.model.post.list.Report;
 import com.jo.ayo.ayojo.ui.postdetail.PostDetailActivity;
 
 import java.util.List;

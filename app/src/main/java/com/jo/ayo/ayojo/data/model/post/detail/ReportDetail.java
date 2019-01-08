@@ -1,6 +1,6 @@
-package com.jo.ayo.ayojo.data.model.post;
+package com.jo.ayo.ayojo.data.model.post.detail;
 
-public class Report {
+public class ReportDetail {
     private String id;
     private String name;
     private String address1;

@@ -16,6 +16,7 @@ import android.view.View;
 import android.view.animation.OvershootInterpolator;
 import android.widget.ImageView;
 
+import com.camerakit.CameraKit;
 import com.camerakit.CameraKitView;
 import com.github.ybq.android.spinkit.style.Circle;
 import com.github.ybq.android.spinkit.style.Wave;
@@ -28,6 +29,7 @@ import java.io.IOException;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import butterknife.OnTouch;
 
 public class TakePictureActivity extends AppCompatActivity {
@@ -83,6 +85,11 @@ public class TakePictureActivity extends AppCompatActivity {
             }
         }
         return true;
+    }
+
+    @OnClick(R.id.btnRotateCamera)
+    void rotateCamera() {
+        switchCamera();
     }
 
     @Override
@@ -185,5 +192,13 @@ public class TakePictureActivity extends AppCompatActivity {
                 imageView.setImageResource(resId);
             }
         }, 120);
+    }
+
+    private void switchCamera() {
+        if (cameraKitView.getFacing() == CameraKit.FACING_BACK) {
+            cameraKitView.setFacing(CameraKit.FACING_FRONT);
+        } else if (cameraKitView.getFacing() == CameraKit.FACING_FRONT) {
+            cameraKitView.setFacing(CameraKit.FACING_BACK);
+        }
     }
 }

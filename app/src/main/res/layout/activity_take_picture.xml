@@ -20,14 +20,30 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/btnCapture"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
-        android:layout_marginBottom="56dp"
-        android:background="@drawable/bg_capture"
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent" />
+        app:layout_constraintRight_toRightOf="parent">
+
+        <ImageView
+            android:id="@+id/btnRotateCamera"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="56dp"
+            android:layout_marginRight="56dp"
+            android:src="@drawable/refresh" />
+
+        <Button
+            android:id="@+id/btnCapture"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_centerInParent="true"
+            android:layout_marginBottom="56dp"
+            android:background="@drawable/bg_capture" />
+
+    </RelativeLayout>
 
 </android.support.constraint.ConstraintLayout>

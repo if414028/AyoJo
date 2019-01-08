@@ -1,7 +1,5 @@
 package com.jo.ayo.ayojo.data.model.post.list;
 
-import com.jo.ayo.ayojo.data.model.post.Report;
-
 import java.util.List;
 
 public class ReportData {

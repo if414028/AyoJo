@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:background="@color/colorBackground"
+    android:orientation="vertical"
     tools:context=".ui.login.LoginActivity">
 
     <ScrollView
@@ -22,8 +22,8 @@
             android:orientation="vertical">
 
             <ImageView
-                android:layout_width="200dp"
-                android:layout_height="200dp"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
                 android:layout_gravity="center_horizontal"
                 android:src="@drawable/logo" />
 
@@ -33,10 +33,10 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="16dp"
                 android:layout_marginTop="32dp"
-                android:inputType="text"
                 android:layout_marginRight="16dp"
                 android:background="@drawable/et_grey_rounded"
                 android:hint="Username"
+                android:inputType="text"
                 android:padding="8dp"
                 android:textSize="14sp" />
 

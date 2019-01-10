@@ -47,7 +47,6 @@ public class TakePictureActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         cameraKitView = findViewById(R.id.camera);
-        cameraKitView.setPermissions(CameraKitView.PERMISSION_STORAGE);
 
         Wave wave = new Wave();
         progressDialog = new ProgressDialog(TakePictureActivity.this);

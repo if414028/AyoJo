@@ -16,8 +16,8 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
 
-        debug{
-            buildConfigField "String", "BASE_URL", '"http://192.168.43.149:3000"'
+        debug {
+            buildConfigField "String", "BASE_URL", '"https://ayojodevelopment.appspot.com"'
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }

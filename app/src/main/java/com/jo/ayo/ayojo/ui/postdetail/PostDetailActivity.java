@@ -1,9 +1,11 @@
 package com.jo.ayo.ayojo.ui.postdetail;
 
 import android.content.Intent;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.widget.FrameLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -19,6 +21,7 @@ import com.jo.ayo.ayojo.data.model.post.detail.ReportDataDetailResult;
 import com.jo.ayo.ayojo.data.pref.PrefManager;
 import com.jo.ayo.ayojo.nework.MyRetrofitClient;
 import com.jo.ayo.ayojo.nework.api.ApiPostDetail;
+import com.jo.ayo.ayojo.ui.login.LoginActivity;
 import com.jo.ayo.ayojo.ui.main.MainActivity;
 import com.jo.ayo.ayojo.ui.post.SecondQuestionActivity;
 
@@ -33,14 +36,17 @@ public class PostDetailActivity extends AppCompatActivity {
     private SupportMapFragment mapFragment;
     private String id, token;
 
-    @BindView(R.id.tvCoordinateMap)
+    @BindView(R.id.tvAddress1)
     TextView tvCoordinate;
 
-    @BindView(R.id.tvAddressMap)
+    @BindView(R.id.tvAddress2)
     TextView tvAddress;
 
     @BindView(R.id.tvHouseOwnerMap)
     TextView tvHouseOwner;
+
+    @BindView(R.id.lyDetail)
+    FrameLayout lyDetail;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,19 +83,34 @@ public class PostDetailActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<ReportDataDetailResult> call, Response<ReportDataDetailResult> response) {
 
-                double lat = Double.parseDouble(response.body().getData().getLat());
-                double lng = Double.parseDouble(response.body().getData().getLng());
-                String address = response.body().getData().getAddress1();
-                String houseOwner = response.body().getData().getName();
+                String code = String.valueOf(response.code());
 
-                mapFragment.getMapAsync(googleMap -> {
-                    LatLng markerPosition = new LatLng(lat, lng);
-                    googleMap.addMarker(new MarkerOptions().position(markerPosition)
-                            .title(houseOwner));
-                    googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(markerPosition, 15f));
-                    tvAddress.setText(address);
-                    tvHouseOwner.setText(houseOwner);
-                });
+                if (code.equals("200")){
+                    double lat = Double.parseDouble(response.body().getData().getLat());
+                    double lng = Double.parseDouble(response.body().getData().getLng());
+                    String address = response.body().getData().getAddress1();
+                    String addressBySurveyor = response.body().getData().getAddress2();
+                    String houseOwner = response.body().getData().getName();
+
+                    mapFragment.getMapAsync(googleMap -> {
+                        LatLng markerPosition = new LatLng(lat, lng);
+                        googleMap.addMarker(new MarkerOptions().position(markerPosition)
+                                .title(houseOwner));
+                        googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(markerPosition, 15f));
+                        tvAddress.setText(addressBySurveyor);
+                        tvCoordinate.setText(address);
+                        tvHouseOwner.setText(houseOwner);
+                    });
+                } else if (code.equals("401")) {
+                    Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+                    startActivity(intent);
+                } else if (code.equals("400")) {
+                    Snackbar snackbar = Snackbar.make(lyDetail, "Username atau password tidak boleh kosong, silahkan coba lagi.", Snackbar.LENGTH_LONG);
+                    snackbar.show();
+                } else {
+                    Snackbar snackbar = Snackbar.make(lyDetail, "Sedang ada gangguan server, silahkan coba lagi.", Snackbar.LENGTH_LONG);
+                    snackbar.show();
+                }
 
             }
 

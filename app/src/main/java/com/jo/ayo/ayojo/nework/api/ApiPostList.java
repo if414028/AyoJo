@@ -11,7 +11,7 @@ public interface ApiPostList {
 
     @GET("api/reports/mobile")
     Call<ReportDataResult> getPostLis(@Header("authorization") String token,
-                                @Query("limit") int limit,
-                                @Query("sortby") String sortby,
-                                @Query("order") String order);
+                                      @Query("limit") int limit,
+                                      @Query("sortby") String sortby,
+                                      @Query("order") String order);
 }

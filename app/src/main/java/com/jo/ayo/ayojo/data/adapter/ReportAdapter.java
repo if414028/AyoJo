@@ -36,8 +36,10 @@ public class ReportAdapter extends RecyclerView.Adapter<ReportAdapter.ViewHolder
         String date = reportList.get(position).getCreatedAt();
         String id = reportList.get(position).getId();
 
+        String dateResult = date.substring(0, Math.min(date.length(), 10));
+
         holder.tvHouseOwner.setText(houseOwner);
-        holder.tvDate.setText(date);
+        holder.tvDate.setText(dateResult);
         holder.setItemClickListener((v, pos) -> {
             Intent intent = new Intent(context, PostDetailActivity.class);
             intent.putExtra("ID", id);

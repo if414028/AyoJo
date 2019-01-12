@@ -3,6 +3,7 @@ package com.jo.ayo.ayojo.ui.post;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Camera;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Environment;
@@ -22,6 +23,7 @@ import com.github.ybq.android.spinkit.style.Circle;
 import com.github.ybq.android.spinkit.style.Wave;
 import com.jo.ayo.ayojo.R;
 import com.jo.ayo.ayojo.ui.main.MainActivity;
+import com.jo.ayo.ayojo.utils.ResultHolder;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -67,11 +69,14 @@ public class TakePictureActivity extends AppCompatActivity {
                 cameraKitView.captureImage(new CameraKitView.ImageCallback() {
                     @Override
                     public void onImage(CameraKitView cameraKitView, byte[] capturedImage) {
-                        File savePhoto = new File(Environment.getExternalStorageDirectory(), "/Camera/photo.jpg");
+                        File savePhoto = new File(Environment.getExternalStorageDirectory(), "/photo.jpg");
                         try {
                             FileOutputStream outputStream = new FileOutputStream(savePhoto.getPath());
                             outputStream.write(capturedImage);
                             outputStream.close();
+
+                            Bitmap bitmap = BitmapFactory.decodeByteArray(capturedImage, 0, capturedImage.length);
+                            ResultHolder.setImage(bitmap);
                             Intent intent = new Intent(getApplicationContext(), ReviewPostActivity.class);
                             startActivity(intent);
                             progressDialog.dismiss();

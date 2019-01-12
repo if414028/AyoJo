@@ -14,4 +14,11 @@ public interface ApiPostList {
                                       @Query("limit") int limit,
                                       @Query("sortby") String sortby,
                                       @Query("order") String order);
+
+    @GET("api/reports/mobile")
+    Call<ReportDataResult> getPostFiltered(@Header("authorization") String token,
+                                        @Query("limit") int limit,
+                                        @Query("sortby") String sortby,
+                                        @Query("order") String order,
+                                        @Query("filterbydate") String filter);
 }

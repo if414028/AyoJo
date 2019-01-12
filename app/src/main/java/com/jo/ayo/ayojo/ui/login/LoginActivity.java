@@ -102,6 +102,14 @@ public class LoginActivity extends AppCompatActivity {
         login();
     }
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finishAffinity();
+        System.exit(0);
+        return;
+    }
+
     private void login() {
         progressDialog.show();
         progressDialog.setContentView(R.layout.progressbar_spinkit);
@@ -150,5 +158,7 @@ public class LoginActivity extends AppCompatActivity {
                 snackbar.show();
             }
         });
+
+
     }
 }

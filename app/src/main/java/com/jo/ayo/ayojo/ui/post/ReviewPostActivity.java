@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.database.Cursor;
+import android.graphics.Bitmap;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Environment;
@@ -29,8 +30,13 @@ import com.jo.ayo.ayojo.nework.api.ApiCreatePost;
 import com.jo.ayo.ayojo.nework.api.ApiImageUpload;
 import com.jo.ayo.ayojo.ui.login.LoginActivity;
 import com.jo.ayo.ayojo.ui.main.MainActivity;
+import com.jo.ayo.ayojo.utils.ResultHolder;
 
+import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.util.LinkedHashMap;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -41,6 +47,7 @@ import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+import retrofit2.http.Headers;
 
 public class ReviewPostActivity extends AppCompatActivity {
 
@@ -87,7 +94,7 @@ public class ReviewPostActivity extends AppCompatActivity {
         getSupportActionBar().setTitle("Review laporan");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        Uri uri = Uri.parse(Environment.getExternalStorageDirectory().getPath() + "/Camera/photo.jpg");
+        Uri uri = Uri.parse(Environment.getExternalStorageDirectory().getPath() + "/photo.jpg");
         imgPreview.setImageURI(uri);
 
         //get data from preferences
@@ -151,16 +158,32 @@ public class ReviewPostActivity extends AppCompatActivity {
         }
     }
 
+    private File createTempFile(Bitmap bitmap) {
+        //write the bytes in file
+        File file = new File(getExternalFilesDir(Environment.DIRECTORY_PICTURES), System.currentTimeMillis() + "_image.jpg");
+        try {
+            ByteArrayOutputStream bos = new ByteArrayOutputStream();
+            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, bos);
+            byte[] bitmapData = bos.toByteArray();
+            FileOutputStream fos = new FileOutputStream(file);
+            fos.write(bitmapData);
+            fos.flush();
+            fos.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return file;
+    }
+
     private void uploadImage() {
         progressDialog.show();
         progressDialog.setContentView(R.layout.progressbar_spinkit);
-        Uri uri = Uri.parse(Environment.getExternalStorageDirectory().getPath() + "/Camera/photo.jpg");
 
-        String filePath = getRealPathFromURIPath(uri, ReviewPostActivity.this);
+        Bitmap image = ResultHolder.getImage();
+        File file = createTempFile(image);
 
-        File image = new File(filePath);
-        RequestBody imageRequest = RequestBody.create(MediaType.parse("image/jpg"), image);
-        MultipartBody.Part imageBody = MultipartBody.Part.createFormData("file", image.getName(), imageRequest);
+        RequestBody imageRequest = RequestBody.create(MediaType.parse("image/jpeg"), file);
+        MultipartBody.Part imageBody = MultipartBody.Part.createFormData("file", file.getName(), imageRequest);
 
         ApiImageUpload service = MyRetrofitClient.createService(ApiImageUpload.class);
         Call<ImageUpload> call = service.uploadImage(imageBody);
@@ -185,7 +208,7 @@ public class ReviewPostActivity extends AppCompatActivity {
             @Override
             public void onFailure(Call<ImageUpload> call, Throwable t) {
                 progressDialog.dismiss();
-                Snackbar snackbar = Snackbar.make(lyPostPreview, "Anda tidak tersambung dengan internet", Snackbar.LENGTH_LONG);
+                Snackbar snackbar = Snackbar.make(lyPostPreview, "Gagal", Snackbar.LENGTH_LONG);
                 snackbar.show();
             }
         });

@@ -21,6 +21,7 @@ import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.animation.OvershootInterpolator;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
@@ -50,6 +51,7 @@ import java.util.Date;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import butterknife.OnTextChanged;
 import butterknife.OnTouch;
 
 public class HouseOwnerDescActivity extends AppCompatActivity {
@@ -98,6 +100,9 @@ public class HouseOwnerDescActivity extends AppCompatActivity {
     @BindView(R.id.txtFemale)
     TextView txtFemale;
 
+    @BindView(R.id.btnNextToStepTwo)
+    Button btnNextStep;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -126,6 +131,24 @@ public class HouseOwnerDescActivity extends AppCompatActivity {
             }
         }
         return true;
+    }
+
+    @OnTextChanged({R.id.etHouseOwner, R.id.etPekerjaan, R.id.etAlamat, R.id.etUsia})
+    void formValidation() {
+        String houseOwner = etHouseOwner.getText().toString();
+        String pekerjaan = etWork.getText().toString();
+        String alamat = etAddress.getText().toString();
+        String usia = etAge.getText().toString();
+
+        if (houseOwner.equals("") || pekerjaan.equals("") || alamat.equals("") || usia.equals("")) {
+            btnNextStep.setEnabled(false);
+            btnNextStep.setBackgroundResource(R.drawable.bt_rounded_disable);
+            btnNextStep.setTextColor(getResources().getColor(R.color.colorWhite));
+        } else {
+            btnNextStep.setEnabled(true);
+            btnNextStep.setBackgroundResource(R.drawable.bt_rounded);
+            btnNextStep.setTextColor(getResources().getColor(R.color.colorWhite));
+        }
     }
 
     @OnTouch(R.id.btnFemale)

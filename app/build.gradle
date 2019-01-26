@@ -24,6 +24,7 @@ android {
         }
 
         debug {
+            debuggable false
             buildConfigField "String", "BASE_URL", '"https://ayojodevelopment.appspot.com"'
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }

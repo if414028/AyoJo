@@ -22,8 +22,8 @@
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
                 android:layout_marginLeft="56dp"
-                android:layout_marginRight="56dp"
                 android:layout_marginTop="8dp"
+                android:layout_marginRight="56dp"
                 android:layout_marginBottom="8dp"
                 app:cardCornerRadius="16dp"
                 app:cardElevation="4dp">
@@ -87,7 +87,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
-                        android:text="Jenis kelamin"/>
+                        android:text="Jenis kelamin" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -140,8 +140,9 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
-                        android:background="@drawable/bt_rounded"
+                        android:background="@drawable/bt_rounded_disable"
                         android:text="Selanjutnya"
+                        android:enabled="false"
                         android:textColor="@color/colorWhite"
                         android:textSize="12sp" />
 

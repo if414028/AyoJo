@@ -85,7 +85,7 @@ public class PostDetailActivity extends AppCompatActivity {
 
                 String code = String.valueOf(response.code());
 
-                if (code.equals("200")){
+                if (code.equals("200")) {
                     double lat = Double.parseDouble(response.body().getData().getLat());
                     double lng = Double.parseDouble(response.body().getData().getLng());
                     String address = response.body().getData().getAddress1();

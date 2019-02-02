@@ -179,8 +179,11 @@ public class ReviewPostActivity extends AppCompatActivity {
         progressDialog.show();
         progressDialog.setContentView(R.layout.progressbar_spinkit);
 
-        Bitmap image = ResultHolder.getImage();
-        File file = createTempFile(image);
+        Uri uri = Uri.parse(Environment.getExternalStorageDirectory().getPath() + "/photo.jpg");
+//        File video = new File(uri.getPath());
+//
+//        Bitmap image = ResultHolder.getImage();
+        File file = new File(uri.getPath());
 
         RequestBody imageRequest = RequestBody.create(MediaType.parse("image/jpeg"), file);
         MultipartBody.Part imageBody = MultipartBody.Part.createFormData("file", file.getName(), imageRequest);

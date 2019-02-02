@@ -73,7 +73,7 @@ public class SecondQuestionActivity extends AppCompatActivity {
 
         PrefManager.setSecondanswerkey(getApplicationContext(), postData);
 
-        Intent intent = new Intent(getApplicationContext(), TakePictureActivity.class);
+        Intent intent = new Intent(getApplicationContext(), CameraIntentActivity.class);
         startActivity(intent);
     }
 
@@ -246,21 +246,5 @@ public class SecondQuestionActivity extends AppCompatActivity {
                 .setDuration(300)
                 .setInterpolator(new OvershootInterpolator())
                 .start();
-    }
-
-    void changeViewImageResource(final ImageView imageView, @DrawableRes final int resId) {
-        imageView.setRotation(0);
-        imageView.animate()
-                .rotationBy(360)
-                .setDuration(400)
-                .setInterpolator(new OvershootInterpolator())
-                .start();
-
-        imageView.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                imageView.setImageResource(resId);
-            }
-        }, 120);
     }
 }

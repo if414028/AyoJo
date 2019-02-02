@@ -94,7 +94,7 @@ public class ReviewPostActivity extends AppCompatActivity {
         getSupportActionBar().setTitle("Review laporan");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        Uri uri = Uri.parse(Environment.getExternalStorageDirectory().getPath() + "/photo.jpg");
+        Uri uri = Uri.parse(Environment.getExternalStoragePublicDirectory("AyoJo").getPath() + "/photo.jpg");
         imgPreview.setImageURI(uri);
 
         //get data from preferences
@@ -179,7 +179,7 @@ public class ReviewPostActivity extends AppCompatActivity {
         progressDialog.show();
         progressDialog.setContentView(R.layout.progressbar_spinkit);
 
-        Uri uri = Uri.parse(Environment.getExternalStorageDirectory().getPath() + "/photo.jpg");
+        Uri uri = Uri.parse(Environment.getExternalStoragePublicDirectory("AyoJo").getPath() + "/photo.jpg");
 //        File video = new File(uri.getPath());
 //
 //        Bitmap image = ResultHolder.getImage();

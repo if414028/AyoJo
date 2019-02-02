@@ -20,7 +20,6 @@ import com.jo.ayo.ayojo.R;
 import com.jo.ayo.ayojo.utils.ResultHolder;
 
 import java.io.File;
-import java.io.IOException;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -73,14 +72,15 @@ public class CameraIntentActivity extends AppCompatActivity {
     }
 
     private static File getOutputMediaFile() {
-        File mediaStorageDir = new File(Environment.getExternalStorageDirectory(), "/photo.jpg");
+        File mediaStorageDir = new File(Environment.getExternalStorageDirectory(), "AyoJo");
 
         if (!mediaStorageDir.exists()) {
             if (!mediaStorageDir.mkdirs()) {
                 return null;
             }
         }
-        File savePhoto = new File(Environment.getExternalStorageDirectory(), "/photo.jpg");
+        File savePhoto = new File(mediaStorageDir.getPath() + File.separator +
+                "photo.jpg");
         return new File(savePhoto.getPath());
     }
 

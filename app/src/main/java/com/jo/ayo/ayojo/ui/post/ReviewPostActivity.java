@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.drawable.ColorDrawable;
+import android.location.Location;
 import android.net.Uri;
 import android.os.Environment;
 import android.provider.MediaStore;
@@ -19,6 +20,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.github.ybq.android.spinkit.style.Wave;
+import com.google.android.gms.location.FusedLocationProviderClient;
+import com.google.android.gms.location.LocationCallback;
+import com.google.android.gms.location.LocationRequest;
+import com.google.android.gms.location.LocationSettingsRequest;
+import com.google.android.gms.location.SettingsClient;
 import com.jo.ayo.ayojo.R;
 import com.jo.ayo.ayojo.data.model.post.create.ImageUpload;
 import com.jo.ayo.ayojo.data.model.pref.PostData;
@@ -50,6 +56,22 @@ import retrofit2.Response;
 import retrofit2.http.Headers;
 
 public class ReviewPostActivity extends AppCompatActivity {
+
+    private FusedLocationProviderClient mFusedLocationClient;
+    private SettingsClient mSettingsClient;
+    private LocationRequest mLocationRequest;
+    private LocationSettingsRequest mLocationSettingsRequest;
+    private LocationCallback mLocationCallback;
+    private Location mCurrentLocation;
+    private String mLastUpdateTime;
+    private Boolean mRequestingLocationUpdates;
+
+    private static final int PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION = 1;
+    private static final int REQUEST_CHECK_SETTINGS = 100;
+    private static final long UPDATE_INTERVAL_IN_MILLISECONDS = 10000;
+    private static final long FASTEST_UPDATE_INTERVAL_IN_MILLISECONDS = 5000;
+
+    private static final String TAG = ReviewPostActivity.class.getSimpleName();
 
     @BindView(R.id.imgPreview)
     ImageView imgPreview;
@@ -94,7 +116,7 @@ public class ReviewPostActivity extends AppCompatActivity {
         getSupportActionBar().setTitle("Review laporan");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        Uri uri = Uri.parse(Environment.getExternalStoragePublicDirectory("AyoJo").getPath() + "/photo.jpg");
+        Uri uri = Uri.parse(Environment.getExternalStorageDirectory().getPath() + "/photo.jpg");
         imgPreview.setImageURI(uri);
 
         //get data from preferences
@@ -179,11 +201,14 @@ public class ReviewPostActivity extends AppCompatActivity {
         progressDialog.show();
         progressDialog.setContentView(R.layout.progressbar_spinkit);
 
-        Uri uri = Uri.parse(Environment.getExternalStoragePublicDirectory("AyoJo").getPath() + "/photo.jpg");
+//        Uri uri = Uri.parse(Environment.getExternalStoragePublicDirectory("AyoJo").getPath() + "/photo.jpg");
 //        File video = new File(uri.getPath());
 //
 //        Bitmap image = ResultHolder.getImage();
-        File file = new File(uri.getPath());
+//        File file = new File(uri.getPath());
+
+        Bitmap image = ResultHolder.getImage();
+        File file = createTempFile(image);
 
         RequestBody imageRequest = RequestBody.create(MediaType.parse("image/jpeg"), file);
         MultipartBody.Part imageBody = MultipartBody.Part.createFormData("file", file.getName(), imageRequest);

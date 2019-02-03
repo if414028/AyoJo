@@ -32,7 +32,7 @@ public class ReportAdapter extends RecyclerView.Adapter<ReportAdapter.ViewHolder
     @Override
     public void onBindViewHolder(ReportAdapter.ViewHolder holder, int position) {
         Context context = holder.itemView.getContext();
-        String houseOwner = reportList.get(position).getName();
+        String houseOwner = reportList.get(position).getId();
         String date = reportList.get(position).getCreatedAt();
         String id = reportList.get(position).getId();
 

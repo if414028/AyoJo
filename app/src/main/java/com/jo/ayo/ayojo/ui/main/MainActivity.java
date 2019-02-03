@@ -33,6 +33,7 @@ import com.jo.ayo.ayojo.nework.MyRetrofitClient;
 import com.jo.ayo.ayojo.nework.api.ApiPostList;
 import com.jo.ayo.ayojo.ui.login.LoginActivity;
 import com.jo.ayo.ayojo.ui.post.HouseOwnerDescActivity;
+import com.jo.ayo.ayojo.ui.post.TakePictureActivity;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -80,7 +81,7 @@ public class MainActivity extends AppCompatActivity {
         fabCreatePost.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), HouseOwnerDescActivity.class);
+                Intent intent = new Intent(getApplicationContext(), TakePictureActivity.class);
                 startActivity(intent);
             }
         });
@@ -97,7 +98,6 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        //return super.onCreateOptionsMenu(menu);
         getMenuInflater().inflate(R.menu.main_menu, menu);
         return true;
     }

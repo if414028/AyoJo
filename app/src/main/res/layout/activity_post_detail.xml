@@ -22,7 +22,7 @@
         android:layout_gravity="bottom"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
-        android:layout_marginBottom="24dp">
+        android:layout_marginBottom="32dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -35,7 +35,7 @@
                 android:layout_marginLeft="8dp"
                 android:layout_marginTop="16dp"
                 android:layout_marginRight="16dp"
-                android:text="Alamat masukan surveyor" />
+                android:text="Alamat" />
 
             <TextView
                 android:id="@+id/tvAddress1"
@@ -44,48 +44,11 @@
                 android:layout_marginLeft="8dp"
                 android:layout_marginTop="2dp"
                 android:layout_marginRight="8dp"
+                android:layout_marginBottom="16dp"
                 android:background="@drawable/et_grey_rounded"
                 android:padding="8dp"
                 android:text="Alamat1" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="8dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginRight="16dp"
-                android:text="Alamat sesuai koordinat" />
-
-            <TextView
-                android:id="@+id/tvAddress2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="8dp"
-                android:layout_marginTop="2dp"
-                android:layout_marginRight="8dp"
-                android:background="@drawable/et_grey_rounded"
-                android:padding="8dp"
-                android:text="Alamat2" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="8dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginRight="16dp"
-                android:text="Nama pemilik rumah" />
-
-            <TextView
-                android:id="@+id/tvHouseOwnerMap"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="8dp"
-                android:layout_marginTop="2dp"
-                android:layout_marginRight="8dp"
-                android:layout_marginBottom="16dp"
-                android:background="@drawable/et_grey_rounded"
-                android:padding="8dp"
-                android:text="Nama pemilik rumah" />
 
         </LinearLayout>
 

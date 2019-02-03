@@ -39,12 +39,6 @@ public class PostDetailActivity extends AppCompatActivity {
     @BindView(R.id.tvAddress1)
     TextView tvCoordinate;
 
-    @BindView(R.id.tvAddress2)
-    TextView tvAddress;
-
-    @BindView(R.id.tvHouseOwnerMap)
-    TextView tvHouseOwner;
-
     @BindView(R.id.lyDetail)
     FrameLayout lyDetail;
 
@@ -75,8 +69,6 @@ public class PostDetailActivity extends AppCompatActivity {
 
     private void getPostDetail() {
 
-        //Toast.makeText(this, "id: " + token, Toast.LENGTH_SHORT).show();
-
         ApiPostDetail service = MyRetrofitClient.createService(ApiPostDetail.class);
         Call<ReportDataDetailResult> call = service.getPostDetail(token, id);
         call.enqueue(new Callback<ReportDataDetailResult>() {
@@ -86,20 +78,17 @@ public class PostDetailActivity extends AppCompatActivity {
                 String code = String.valueOf(response.code());
 
                 if (code.equals("200")) {
+                    String id = response.body().getData().getId();
                     double lat = Double.parseDouble(response.body().getData().getLat());
                     double lng = Double.parseDouble(response.body().getData().getLng());
-                    String address = response.body().getData().getAddress1();
-                    String addressBySurveyor = response.body().getData().getAddress2();
-                    String houseOwner = response.body().getData().getName();
+                    String address = response.body().getData().getAddress();
 
                     mapFragment.getMapAsync(googleMap -> {
                         LatLng markerPosition = new LatLng(lat, lng);
                         googleMap.addMarker(new MarkerOptions().position(markerPosition)
-                                .title(houseOwner));
+                                .title(id));
                         googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(markerPosition, 15f));
-                        tvAddress.setText(addressBySurveyor);
                         tvCoordinate.setText(address);
-                        tvHouseOwner.setText(houseOwner);
                     });
                 } else if (code.equals("401")) {
                     Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
@@ -116,7 +105,8 @@ public class PostDetailActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<ReportDataDetailResult> call, Throwable t) {
-
+                Snackbar snackbar = Snackbar.make(lyDetail, "Tidak ada jaringan internet, silahkan coba lagi.", Snackbar.LENGTH_LONG);
+                snackbar.show();
             }
         });
 

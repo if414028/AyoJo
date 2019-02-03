@@ -10,6 +10,6 @@ import retrofit2.http.POST;
 public interface ApiCheckLogin {
 
     @FormUrlEncoded
-    @POST("api/appUsers/cekStatus")
+    @POST("api/otherSurveyors/cekStatus")
     Call<UserCheckLogin> checkLogin(@Field("oldToken") String token);
 }

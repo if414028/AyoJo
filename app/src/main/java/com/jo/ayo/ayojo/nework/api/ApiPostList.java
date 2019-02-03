@@ -9,13 +9,13 @@ import retrofit2.http.Query;
 
 public interface ApiPostList {
 
-    @GET("api/reports/mobile")
+    @GET("api/otherReports/mobile")
     Call<ReportDataResult> getPostLis(@Header("authorization") String token,
                                       @Query("limit") int limit,
                                       @Query("sortby") String sortby,
                                       @Query("order") String order);
 
-    @GET("api/reports/mobile")
+    @GET("api/otherReports/mobile")
     Call<ReportDataResult> getPostFiltered(@Header("authorization") String token,
                                         @Query("limit") int limit,
                                         @Query("sortby") String sortby,

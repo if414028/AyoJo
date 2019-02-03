@@ -10,7 +10,7 @@ import retrofit2.http.POST;
 public interface ApiLogin {
 
     @FormUrlEncoded
-    @POST("api/appUsers/login")
+    @POST("api/otherSurveyors/login")
     Call<UserDataResult> login(
             @Field("username") String username,
             @Field("password") String password);

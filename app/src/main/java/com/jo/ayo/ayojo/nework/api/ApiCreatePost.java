@@ -11,18 +11,11 @@ import retrofit2.http.POST;
 public interface ApiCreatePost {
 
     @FormUrlEncoded
-    @POST("api/reports/")
+    @POST("api/otherReports/")
     Call<PostDataResult> createPost(
             @Header("authorization") String token,
-            @Field("name") String name,
-            @Field("address1") String address,
-            @Field("pekerjaan") String work,
-            @Field("usia") String age,
-            @Field("jenisKelamin") String sex,
             @Field("lat") String lat,
             @Field("lng") String lng,
-            @Field("images") String imageUrl,
-            @Field("answer1") String answer1,
-            @Field("answer2") String answer2
+            @Field("images") String imageUrl
     );
 }
